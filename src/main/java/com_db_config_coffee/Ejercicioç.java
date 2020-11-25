@@ -29,7 +29,7 @@ public class Ejercicioç {
             Class.forName("org.apache.derby.jdbc.ClientDriver");
             System.out.println("Cargo ok el driver");
             //conectar con la bd CoffeeShop con usuario y clave
-            String url = "jdbc:derby://localhost:1527/Bank2";
+            String url = "jdbc:derby://localhost:1527/Bank";
             System.out.println("... Obtener conexion con la bd");
             con = DriverManager.getConnection(url);
             System.out.println("... OK ESTAMOS CONECTADOS");
@@ -42,7 +42,9 @@ public class Ejercicioç {
     }
     
     public static void informeCuentasBancariasPorConsola() throws SQLException{
-        String consulta = "SELECT CB.IBAN, CB.SALDO, B.NOMBRE as NOMBRE_BANCO, C.NOMBRE, C.APELLIDOS FROM BANCOS B, CLIENTES C, CUENTAS_BANCARIAS CB";
+        String consulta = "SELECT CB.IBAN, CB.SALDO, B.NOMBRE as NOMBRE_BANCO, C.NOMBRE, C.APELLIDOS " +
+                          "FROM BANCOS B, CLIENTES C, CUENTAS_BANCARIAS CB " +
+                          "WHERE B.ID_BANCO = C.ID_BANCO AND C.ID_CLIENTE = CB.ID_CLIENTE";
         sentencia = con.createStatement();
         ResultSet resultado = sentencia.executeQuery(consulta);
         while(resultado.next()){
