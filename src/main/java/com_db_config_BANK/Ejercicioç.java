@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com_db_config_coffee;
+package com_db_config_BANK;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -29,7 +29,8 @@ public class Ejercicioç {
             Class.forName("org.apache.derby.jdbc.ClientDriver");
             System.out.println("Cargo ok el driver");
             //conectar con la bd CoffeeShop con usuario y clave
-            String url = "jdbc:derby://localhost:1527/Bank";
+            //String url = "jdbc:derby://localhost:1527/Bank";
+            String url = "jdbc:derby://localhost:1527/Bank2";
             System.out.println("... Obtener conexion con la bd");
             con = DriverManager.getConnection(url);
             System.out.println("... OK ESTAMOS CONECTADOS");
@@ -60,7 +61,25 @@ public class Ejercicioç {
     }
     
     public static void main(String[] args) throws SQLException {
-        informeCuentasBancariasPorConsola();
+//        informeCuentasBancariasPorConsola();
+//        informeBancoPorConsola("SELECT * FROM BANCOS");
+    }
+    
+    public static void insertInTo(String query) throws SQLException{
+        sentencia = con.createStatement();
+        sentencia.execute(query);
+    }
+    
+    public static void informeBancoPorConsola(String query) throws SQLException{
+        sentencia = con.createStatement();
+        ResultSet resultado = sentencia.executeQuery(query);
+        while(resultado.next()){
+                    System.out.printf("Id_bancos = %d, Nombre de banco = %-30s \n",
+                        resultado.getInt(1),
+                        resultado.getString(2)
+                    );
+        }
+        cerrarConexion();
     }
     
     public static void cerrarConexion(){
