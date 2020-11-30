@@ -5,7 +5,7 @@
 
 buscar el significado de cola y pila
  */
-package com_db_PruebaPool;
+package com.db.PruebaPool;
 
 import java.io.FileReader;
 import java.io.IOException;

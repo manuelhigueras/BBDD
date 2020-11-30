@@ -1,6 +1,6 @@
 package com_db_config_coffee;
 
-import com_db_PruebaPool.PoolConexiones;
+import com.db.PruebaPool.PoolConexiones;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

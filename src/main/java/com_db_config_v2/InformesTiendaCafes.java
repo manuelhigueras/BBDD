@@ -5,7 +5,7 @@
  */
 package com_db_config_v2;
 
-import com_db_PruebaPool.PoolConexiones;
+import com.db.PruebaPool.PoolConexiones;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
